@@ -2,6 +2,9 @@
 #include <opencv2/opencv.hpp>
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
+//#include "opencv2/features2d.hpp"
+//#include "opencv2/xfeatures2d.hpp"
+//using namespace cv::xfeatures2d;
 using namespace cv;
 using namespace std;
 
@@ -32,16 +35,11 @@ float getDistance(Point2f pointO, Point2f point1)
 int main()
 {
 
-    Mat src = imread("../images/x.1585293567332_79a6cda5_2.png");
+    Mat src = imread("../images/wraped_doc.png");
     Mat image = src.clone();
     Mat gray, binary;
     cvtColor(image, gray, COLOR_BGR2GRAY);
     threshold(gray, binary, 0, 255, THRESH_BINARY | THRESH_OTSU);
-
-    imshow("gray image", gray);
-    waitKey();
-    imshow("binary image", binary);
-    waitKey();
 
 // 发现轮廓
     vector<vector<Point>> contours;
